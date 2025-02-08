@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useRef, useState } from "react" 
 
 export interface TimerChallengeProps {
   title: string,
@@ -6,11 +6,13 @@ export interface TimerChallengeProps {
 } 
 
 export default function TimerChallenge({ title, targetTime } : TimerChallengeProps) {
+  const timer = useRef<NodeJS.Timeout>();
+
   const [timeStarted, setTimeStarted] = useState<boolean>(false);
   const [timeExpired, setTimeExpired] = useState<boolean>(false);
   
   function handleStart() {
-    setTimeout(() => {
+    timer.current = setTimeout(() => {
       setTimeExpired(true);
     }, targetTime * 1000);
 
@@ -18,7 +20,7 @@ export default function TimerChallenge({ title, targetTime } : TimerChallengePro
   }
 
   function handleStop() {
-    
+    clearTimeout(timer.current);
   }
 
   return <section className="challenge">
@@ -28,7 +30,7 @@ export default function TimerChallenge({ title, targetTime } : TimerChallengePro
       {targetTime} seconds
     </p>
     <p>
-      <button onClick={handleStart}>
+      <button onClick={timeStarted ? handleStop : handleStart}>
         {timeStarted ? 'Stop' : 'Start'} challenge
       </button>
     </p>
