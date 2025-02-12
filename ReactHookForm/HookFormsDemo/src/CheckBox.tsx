@@ -1,15 +1,12 @@
-import { Control, Controller, UseFormRegister } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { EmailFormProps } from "./App";
 
-interface Props {
-  control: Control<EmailFormProps>;
-  register: UseFormRegister<EmailFormProps>
-}
+export function CheckBox() {
+  const methods = useFormContext<EmailFormProps>();
 
-export function CheckBox({ control }: Props) {
   return(
     <Controller
-      control={control}
+      control={methods.control}
       name='isImportant'
       render={({ field }) => (
         <button 

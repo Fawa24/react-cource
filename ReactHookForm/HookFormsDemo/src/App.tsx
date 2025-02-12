@@ -1,4 +1,4 @@
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
 import './App.scss'
 import { CheckBox } from './CheckBox'
 
@@ -9,33 +9,33 @@ export interface EmailFormProps {
 }
 
 function App() {
-  const { register, handleSubmit, formState, reset, control } = useForm<EmailFormProps>({
+  const methods = useForm<EmailFormProps>({
     mode: 'onChange'
   });
 
-  const emailError = formState.errors['email']?.message;
+  const emailError = methods.formState.errors['email']?.message;
 
   const onSubmit:SubmitHandler<EmailFormProps> = (data) => {
     console.log(data);
   }
 
   return (
-    <>
+    <FormProvider {...methods}>
       <h1>Feedback form</h1>
-      <button onClick={() => reset({'email' : '', 'message': ''})}>Reset</button>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <button onClick={() => methods.reset({'email' : '', 'message': ''})}>Reset</button>
+      <form onSubmit={methods.handleSubmit(onSubmit)}>
         {emailError}
         <input type="text" 
           placeholder='Enter email:'
-          {...register('email', 
+          {...methods.register('email', 
           {required: 'This field is required'})}/>
         <textarea placeholder='Enter message:'
-          {...register('message', 
+          {...methods.register('message', 
           {required: 'This field is required'})} />
-        <CheckBox control={control} register={register} />
+        <CheckBox />
         <button type='submit'>Send</button>
       </form>
-    </>
+    </FormProvider>
   )
 }
 
