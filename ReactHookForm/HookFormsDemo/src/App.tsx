@@ -1,7 +1,8 @@
-import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import './App.scss'
+import { CheckBox } from './CheckBox'
 
-interface EmailFormProps {
+export interface EmailFormProps {
   'email': string
   'message' : string
   'isImportant': boolean
@@ -31,23 +32,7 @@ function App() {
         <textarea placeholder='Enter message:'
           {...register('message', 
           {required: 'This field is required'})} />
-
-            <Controller
-              control={control}
-              name='isImportant'
-              render={({ field }) => (
-                <button 
-                  style={{padding: 6, marginBottom: 10, display: 'block'}}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    field.onChange(!field.value);
-                  }}
-                >
-                  {field.value ? 'Important message' : 'Not important message'}
-                </button>
-              )}
-            />
-
+        <CheckBox control={control} register={register} />
         <button type='submit'>Send</button>
       </form>
     </>
