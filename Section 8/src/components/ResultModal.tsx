@@ -1,12 +1,11 @@
-import React, { RefObject } from "react"
+import React, { LegacyRef, RefObject, forwardRef } from "react"
 
 export interface ResultModalProps {
-  ref: RefObject<HTMLDialogElement>;
   result: string;
   targetTime: number;
 }
 
-export default function ResultModal({ref, result, targetTime}: ResultModalProps) {
+const ResultModal = forwardRef (function ResultModal({ result, targetTime}: ResultModalProps, ref: LegacyRef<HTMLDialogElement>) {
   return (
   <dialog ref={ref} className="result-modal">
     <h2>You {result}</h2>
@@ -18,4 +17,6 @@ export default function ResultModal({ref, result, targetTime}: ResultModalProps)
       <button>CLose</button>
     </form>
   </dialog>
-)}
+)});
+
+export default ResultModal;
