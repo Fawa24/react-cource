@@ -8,6 +8,7 @@ export interface TimerChallengeProps {
 
 export default function TimerChallenge({ title, targetTime } : TimerChallengeProps) {
   const timer = useRef<NodeJS.Timeout>();
+  const dialog = useRef<HTMLDialogElement>(null);
 
   const [timeStarted, setTimeStarted] = useState<boolean>(false);
   const [timeExpired, setTimeExpired] = useState<boolean>(false);
@@ -15,6 +16,7 @@ export default function TimerChallenge({ title, targetTime } : TimerChallengePro
   function handleStart() {
     timer.current = setTimeout(() => {
       setTimeExpired(true);
+      dialog.current?.showModal();
     }, targetTime * 1000);
 
     setTimeStarted(true);
@@ -25,7 +27,7 @@ export default function TimerChallenge({ title, targetTime } : TimerChallengePro
   }
 
   return <>
-  {timeExpired && <ResultModal result="lost" targetTime={targetTime}/>}
+  <ResultModal ref={dialog} result="lost" targetTime={targetTime}/>
   <section className="challenge">
     <h2>{title}</h2>
     <p className="challenge-time">

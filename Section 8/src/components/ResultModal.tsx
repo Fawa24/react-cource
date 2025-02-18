@@ -1,13 +1,14 @@
-import React from "react"
+import React, { RefObject } from "react"
 
 export interface ResultModalProps {
+  ref: RefObject<HTMLDialogElement>;
   result: string;
   targetTime: number;
 }
 
-export default function ResultModal({result, targetTime}: ResultModalProps) {
+export default function ResultModal({ref, result, targetTime}: ResultModalProps) {
   return (
-  <dialog className="result-modal">
+  <dialog ref={ref} className="result-modal">
     <h2>You {result}</h2>
 
     <p>The target time was <strong>{targetTime} seconds.</strong></p>
