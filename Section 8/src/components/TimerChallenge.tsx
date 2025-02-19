@@ -10,20 +10,23 @@ export default function TimerChallenge({ title, targetTime } : TimerChallengePro
   const timer = useRef<NodeJS.Timeout>();
   const dialog = useRef<HTMLDialogElement>(null);
 
-  const [timeStarted, setTimeStarted] = useState<boolean>(false);
-  const [timeExpired, setTimeExpired] = useState<boolean>(false);
+  const [timeRemaining, setTimeRemaining] = useState(targetTime * 1000);
+  const timerIsActive = timeRemaining > 0 && timeRemaining < targetTime * 1000;
+
+  if (timeRemaining <= 0) {
+    clearInterval(timer.current);
+    setTimeRemaining(targetTime * 1000);
+    dialog.current?.showModal();
+  }
   
   function handleStart() {
-    timer.current = setTimeout(() => {
-      setTimeExpired(true);
-      dialog.current?.showModal();
-    }, targetTime * 1000);
-
-    setTimeStarted(true);
+    timer.current = setInterval(() => {
+      setTimeRemaining(prevTimeRemaining => prevTimeRemaining - 10);
+    }, 10);
   }
 
   function handleStop() {
-    clearTimeout(timer.current);
+    clearInterval(timer.current);
   }
 
   return <>
@@ -34,12 +37,12 @@ export default function TimerChallenge({ title, targetTime } : TimerChallengePro
       {targetTime} seconds
     </p>
     <p>
-      <button onClick={timeStarted ? handleStop : handleStart}>
-        {timeStarted ? 'Stop' : 'Start'} challenge
+      <button onClick={timerIsActive ? handleStop : handleStart}>
+        {timerIsActive ? 'Stop' : 'Start'} challenge
       </button>
     </p>
-    <p className={timeStarted ? 'active' : undefined}>
-      {timeStarted ? 'Time is running' : 'Timer inactive'} 
+    <p className={timerIsActive ? 'active' : undefined}>
+      {timerIsActive ? 'Time is running' : 'Timer inactive'} 
     </p>
   </section>
   </>
