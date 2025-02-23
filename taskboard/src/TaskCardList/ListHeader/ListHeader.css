@@ -1,0 +1,9 @@
+.card-list-header-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px 0 5px;
+}
+
+.card-list-header-content p {
+  margin: 0;
+}

@@ -1,9 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import TaskCard from './TaskCard/TaskCard';
+import TaskCardList from './TaskCardList/TaskCardList';
+import { TaskCardProps } from './TaskCard/TaskCardProps';
 
 function App() {
+  const cards: TaskCardProps[] = [
+    {name: 'Some name', description: 'Some description'},
+    {name: 'Mariyka', description: 'The best'}
+  ]
+  
   return (
-    <TaskCard name={'Task card'} description={'Some description for the card'} />
+    <TaskCardList name={'Task card'} cardList={cards} />
   )
 }
 
