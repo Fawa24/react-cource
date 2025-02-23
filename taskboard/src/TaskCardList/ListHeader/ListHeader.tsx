@@ -3,7 +3,7 @@ import "./ListHeader.css";
 
 export default function ListHeader({ name, count }: ListHeaderProps) {
   return <div>
-    <hr className="mb-1 mt-1" />
+    <hr className="mb-1 mt-0" />
       <div className="card-list-header-content">
         <p>{name}</p>
         <p>{count}</p>
