@@ -7,3 +7,9 @@
 .card-list-header-content p {
   margin: 0;
 }
+
+.task-list-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

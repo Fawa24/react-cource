@@ -2,7 +2,7 @@ import { ListHeaderProps } from "./ListHeaderProps";
 import "./ListHeader.css";
 
 export default function ListHeader({ name, count }: ListHeaderProps) {
-  return <div>
+  return <div className="task-list-header task-card-list-component">
     <hr className="mb-1 mt-0" />
       <div className="card-list-header-content">
         <p>{name}</p>
