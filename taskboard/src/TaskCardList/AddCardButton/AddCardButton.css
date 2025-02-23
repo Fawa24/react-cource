@@ -1,5 +1,23 @@
 .add-card-button {
+  display: flex; 
+  flex-direction: row;
+  gap: 0.1rem; 
   align-items: center;
   justify-content: center;
   border-style: dashed;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  color: #333;
+}
+
+.add-card-button:hover {
+  background-color: #e0e0e0;
+  border-color: #ccc;
+}
+
+.add-card-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
 }
