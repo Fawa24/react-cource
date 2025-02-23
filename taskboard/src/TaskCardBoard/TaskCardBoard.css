@@ -1,0 +1,12 @@
+.card-board {
+  padding: 10px;
+}
+
+.card-board-header {
+  margin-bottom: 15px;
+}
+
+.card-board-container {
+  display: flex;
+  gap: 25px;
+}

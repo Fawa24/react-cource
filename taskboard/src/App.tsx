@@ -1,15 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import TaskCardList from './TaskCardList/TaskCardList';
-import { TaskCardProps } from './TaskCard/TaskCardProps';
+import TaskCardBoard from './TaskCardBoard/TaskCardBoard';
+import { lists } from './MockValues';
 
 function App() {
-  const cards: TaskCardProps[] = [
-    {name: 'Some name', description: 'Some description'},
-    {name: 'Mariyka', description: 'The best'}
-  ]
-  
   return (
-    <TaskCardList name={'Task card'} cardList={cards} />
+    <TaskCardBoard cardLists={lists} />
   )
 }
 
