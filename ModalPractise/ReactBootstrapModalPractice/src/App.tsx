@@ -1,9 +1,9 @@
+import ModalWithShowButton from "./ModalWithShowButton"
+
 function App() {
 
   return (
-    <>
-      
-    </>
+    <ModalWithShowButton />
   )
 }
 
