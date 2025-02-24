@@ -1,5 +1,7 @@
-import { TaskCardListProps } from "../TaskCardList/TaskCardListProps";
+import { TaskCardListVM } from "../Models/TaskCardListVM";
+import { TaskCardVM } from "../Models/TaskCardVM";
 
 export interface TaskCardBoardProps {
-  cardLists: TaskCardListProps[];
+  cardLists: TaskCardListVM[];
+  addCard: (cardToAdd: TaskCardVM, listId: number) => void;
 }

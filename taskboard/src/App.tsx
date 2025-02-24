@@ -1,10 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TaskCardBoard from './Components/TaskCardBoard/TaskCardBoard';
-import { lists } from './MockValues';
+import { useTaskCards } from './Hooks/useTaskCards';
 
 function App() {
+  const {lists, addCard} = useTaskCards();
+  
   return (
-    <TaskCardBoard cardLists={lists} />
+    <TaskCardBoard cardLists={lists} addCard={addCard} />
   )
 }
 
