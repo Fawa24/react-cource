@@ -1,7 +1,8 @@
-import { Button, Card, Modal } from "react-bootstrap";
+import { Card, } from "react-bootstrap";
 import "./AddCardButton.css";
 import { TaskCardVM } from "../../Models/TaskCardVM";
 import useAddCardModal from "./useAddCardModal";
+import AddCardModal from "./AddCardModal/AddCardModal";
 
 interface AddCardButtonProps {
   listId: number;
@@ -12,16 +13,7 @@ export default function AddCardButton({ listId, addCard }: AddCardButtonProps) {
   const {isModalShown, showModal, hideModal, saveCard} = useAddCardModal({listId, addCard});
 
   return <>
-    <Modal show={isModalShown} centered>
-      <Modal.Header>
-        <h5>Add new card</h5>
-      </Modal.Header>
-      <Modal.Body></Modal.Body>
-      <Modal.Footer>
-        <Button variant="primary" onClick={saveCard}>Save</Button>
-        <Button variant="secondary" onClick={hideModal}>Close</Button>
-      </Modal.Footer>
-    </Modal>
+    <AddCardModal isModalShown={isModalShown} hideModal={hideModal} saveCard={saveCard} />
     <Card className="task-card-list-component add-card-button" onClick={showModal}>
       <i className="bi bi-plus fs-5"></i>
       <p className="m-0">Add new card</p>
