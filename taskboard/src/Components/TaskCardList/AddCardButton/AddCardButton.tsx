@@ -13,7 +13,9 @@ export default function AddCardButton({ listId, addCard }: AddCardButtonProps) {
 
   return <>
     <Modal show={isModalShown} centered>
-      <Modal.Header>Add new card</Modal.Header>
+      <Modal.Header>
+        <h5>Add new card</h5>
+      </Modal.Header>
       <Modal.Body></Modal.Body>
       <Modal.Footer>
         <Button variant="primary" onClick={saveCard}>Save</Button>
