@@ -10,10 +10,15 @@ interface AddCardButtonProps {
 }
 
 export default function AddCardButton({ listId, addCard }: AddCardButtonProps) {
-  const {isModalShown, showModal, hideModal, saveCard} = useAddCardModal({listId, addCard});
+  const {isModalShown, showModal, hideModal, saveCard, register, formState} = useAddCardModal({listId, addCard});
 
   return <>
-    <AddCardModal isModalShown={isModalShown} hideModal={hideModal} saveCard={saveCard} />
+    <AddCardModal 
+      isModalShown={isModalShown} 
+      hideModal={hideModal} 
+      saveCard={saveCard} 
+      register={register} 
+      formState={formState} />
     <Card className="task-card-list-component add-card-button" onClick={showModal}>
       <i className="bi bi-plus fs-5"></i>
       <p className="m-0">Add new card</p>

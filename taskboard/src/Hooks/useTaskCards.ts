@@ -13,11 +13,11 @@ export function useTaskCards(): UseTaskCardsHookResults {
   const [lists, setLists] = useState<TaskCardListVM[]>(initialLists);
 
   function addCard(cardToAdd: TaskCardVM, listId: number) {
-    const list = lists.find(x => x.id === listId)
+    const list = lists.find(x => x.id === listId);
     if (list) {
       list.cardList.push(cardToAdd);
     }
-    setLists(lists);
+    setLists([...lists]);
   }
   
   return {
