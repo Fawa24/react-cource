@@ -1,5 +1,5 @@
-import { TaskCardListVM } from "./Components/Models/TaskCardListVM";
-import { TaskCardVM } from "./Components/Models/TaskCardVM";
+import { TaskCardListVM } from "./Models/TaskCardListVM";
+import { TaskCardVM } from "./Models/TaskCardVM";
 
 const cardsListOne: TaskCardVM[] = [
   {name: 'Some name', description: 'Exploring new horizons, we embark on a journey filled with challenges and opportunities. The world is constantly evolving, offering countless possibilities.'},

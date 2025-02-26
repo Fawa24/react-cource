@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TaskCardVM } from "../../Models/TaskCardVM";
+import { TaskCardVM } from "../../../Models/TaskCardVM";
 import { FormState, useForm, UseFormRegister } from "react-hook-form";
 import { AddCardModalFormFieldValues } from "./AddCardModal/AddCardModal";
 

@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { initialLists } from "../MockValues.ts"
 import { TaskCardProps } from "../Components/TaskCard/TaskCardProps";
-import { TaskCardListVM } from "../Components/Models/TaskCardListVM.ts";
-import { TaskCardVM } from "../Components/Models/TaskCardVM.ts";
+import { TaskCardListVM } from "../Models/TaskCardListVM.ts";
+import { TaskCardVM } from "../Models/TaskCardVM.ts";
 
 export interface UseTaskCardsHookResults {
   lists: TaskCardListVM[];

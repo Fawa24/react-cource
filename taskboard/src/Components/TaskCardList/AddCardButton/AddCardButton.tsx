@@ -1,6 +1,6 @@
 import { Card, } from "react-bootstrap";
 import "./AddCardButton.css";
-import { TaskCardVM } from "../../Models/TaskCardVM";
+import { TaskCardVM } from "../../../Models/TaskCardVM";
 import useAddCardModal from "./useAddCardModal";
 import AddCardModal from "./AddCardModal/AddCardModal";
 
