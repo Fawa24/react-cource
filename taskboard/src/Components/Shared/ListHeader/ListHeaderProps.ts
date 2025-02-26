@@ -1,4 +1,3 @@
 export interface ListHeaderProps {
-  name: string;
-  count: number;
+  children: React.ReactNode;
 }

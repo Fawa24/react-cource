@@ -1,0 +1,18 @@
+#add-list-button {
+  cursor: pointer;
+}
+
+#add-list-button .task-list-header .card-list-header-content p,
+#add-list-button .task-list-header .card-list-header-content i {
+  transition: color 0.2s ease-in-out;
+}
+
+#add-list-button .task-list-header:hover .card-list-header-content p,
+#add-list-button .task-list-header:hover .card-list-header-content i {
+  color: #9c9c9c; /* Slightly lighter color */
+}
+
+#add-list-button .task-list-header .card-list-header-content p,
+#add-list-button .task-list-header .card-list-header-content i {
+  color: initial;
+}

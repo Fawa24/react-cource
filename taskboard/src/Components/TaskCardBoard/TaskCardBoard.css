@@ -10,3 +10,7 @@
   display: flex;
   gap: 25px;
 }
+
+.card-board-container div {
+  width: 15rem;
+}
