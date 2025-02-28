@@ -4,10 +4,10 @@ import { useTaskCards } from './Hooks/useTaskCards';
 import './App.css';
 
 function App() {
-  const {lists, addCard} = useTaskCards();
+  const {lists, addCard, addList} = useTaskCards();
   
   return (
-    <TaskCardBoard cardLists={lists} addCard={addCard} />
+    <TaskCardBoard cardLists={lists} addCard={addCard} addList={addList}/>
   )
 }
 

@@ -7,6 +7,7 @@ import { TaskCardVM } from "../Models/TaskCardVM.ts";
 export interface UseTaskCardsHookResults {
   lists: TaskCardListVM[];
   addCard: (cardToAdd: TaskCardProps, listId: number) => void;
+  addList: (listToAdd: TaskCardListVM) => void;
 }
 
 export function useTaskCards(): UseTaskCardsHookResults {
@@ -19,9 +20,16 @@ export function useTaskCards(): UseTaskCardsHookResults {
     }
     setLists([...lists]);
   }
+
+  function addList(listToAdd: TaskCardListVM) {
+    lists.push(listToAdd);
+    setLists([...lists]);
+    console.log('Not implemented yet addList' + listToAdd);
+  }
   
   return {
     lists,
-    addCard
+    addCard,
+    addList
   }
 }
