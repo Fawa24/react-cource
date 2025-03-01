@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { NavContext } from "./App";
 
 export function CustomButton() {
-  const [signedIn, setSignedIn] = useState<boolean>(false);
+  const { signedIn, setSignedIn } = useContext(NavContext);
 
   return <button onClick={() => setSignedIn(!signedIn)} >
-    {signedIn ? 'Sign our' : 'Sign in'}
+    {signedIn ? 'Sign out' : 'Sign in'}
   </button>
 }
