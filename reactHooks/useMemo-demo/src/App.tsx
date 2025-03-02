@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useMemo, useState } from "react"
 
 function createUser(name: string, surname: string) {
   const user = { name, surname };
@@ -16,7 +16,9 @@ function App() {
   const [surname, setSurname] = useState<string>('');
   const [counter, setCounter] = useState<number>(0);
 
-  const user: User = createUser(name, surname);
+  const user: User = useMemo((): User => {
+    return createUser(name, surname);
+  }, [name, surname]);
   
   return (
     <div>
