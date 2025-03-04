@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
@@ -11,8 +12,13 @@ interface Card {
 function App() {
   const { register, handleSubmit } = useForm<Card>();
 
-  function onSubmitClick(card: Card) {
-    
+  function saveCard(card: Card) {
+    axios.post<Card>('https://localhost:7200/', card)
+    .then(response => {
+      console.log(response);
+    }).catch(error => {
+      console.log(error);
+    });
   }
 
   return (
@@ -26,7 +32,7 @@ function App() {
           <Form.Label>Card description</Form.Label>
           <Form.Control type="text" placeholder="Card description" {...register('description')} />
         </Form.Group>
-        <Button variant="primary" onClick={handleSubmit(onSubmitClick)}>Submit</Button>
+        <Button variant="primary" onClick={handleSubmit(saveCard)}>Submit</Button>
       </Form>
     </div>
   )
