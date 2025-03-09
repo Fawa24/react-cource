@@ -7,8 +7,11 @@
             var mainThr = Thread.CurrentThread;
             mainThr.Name = "Main thread";
 
-            CountDown();
-            CountUp();
+            var threadCountDown = new Thread(CountDown);
+            var threadCountUp = new Thread(CountUp);
+
+            threadCountDown.Start();
+            threadCountUp.Start();
 
             Console.WriteLine($"{mainThr.Name} is completed");
 
