@@ -7,8 +7,8 @@
             var mainThr = Thread.CurrentThread;
             mainThr.Name = "Main thread";
 
-            var threadCountDown = new Thread(CountDown);
-            var threadCountUp = new Thread(CountUp);
+            var threadCountDown = new Thread(() => CountDown("Thread #1"));
+            var threadCountUp = new Thread(() => CountUp("Thread #2"));
 
             threadCountDown.Start();
             threadCountUp.Start();
@@ -18,20 +18,20 @@
             Console.ReadKey();
         }
 
-        public static void CountDown()
+        public static void CountDown(string thrName)
         {
             for (int i = 10; i >= 0; i--)
             {
-                Console.WriteLine($"Timer #1: {i} seconds left");
+                Console.WriteLine($"{thrName}: {i} seconds left");
                 Thread.Sleep(1000);
             }
         }
 
-        public static void CountUp()
+        public static void CountUp(string thrName)
         {
             for (int i = 0; i <= 10; i++)
             {
-                Console.WriteLine($"Timer #2: {i} seconds counted");
+                Console.WriteLine($"{thrName}: {i} seconds counted");
                 Thread.Sleep(1000);
             }
         }
