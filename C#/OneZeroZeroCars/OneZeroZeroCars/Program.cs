@@ -4,36 +4,18 @@
     {
         static void Main(string[] args)
         {
-            var mainThr = Thread.CurrentThread;
-            mainThr.Name = "Main thread";
-
-            var threadCountDown = new Thread(() => CountDown("Thread #1"));
-            var threadCountUp = new Thread(() => CountUp("Thread #2"));
-
-            threadCountDown.Start();
-            threadCountUp.Start();
-
-            Console.WriteLine($"{mainThr.Name} is completed");
-
-            Console.ReadKey();
-        }
-
-        public static void CountDown(string thrName)
-        {
-            for (int i = 10; i >= 0; i--)
+            for (int i = 0; i < 100; i++)
             {
-                Console.WriteLine($"{thrName}: {i} seconds left");
-                Thread.Sleep(1000);
+                var thread = new Thread(() => MoveCar(i));
+                thread.Start();
             }
         }
 
-        public static void CountUp(string thrName)
+        static void MoveCar(int id)
         {
-            for (int i = 0; i <= 10; i++)
-            {
-                Console.WriteLine($"{thrName}: {i} seconds counted");
-                Thread.Sleep(1000);
-            }
+            Console.Write($"Car #{id} started mooving __________\n");
+            Task.Delay(1500).Wait();
+            Console.Write($"__________ Car #{id} arrived\n");
         }
     }
 }
