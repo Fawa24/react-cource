@@ -1,3 +1,5 @@
+using Api.Hubs;
+
 namespace Api
 {
     public class Program
@@ -19,6 +21,8 @@ namespace Api
                     });
             });
 
+            builder.Services.AddSignalR();
+
             var app = builder.Build();
 
             app.UseCors("AllowReactApp");
@@ -26,6 +30,8 @@ namespace Api
             app.UseRouting();
 
             app.MapControllers();
+
+            app.MapHub<ChatHub>("/chathub");
 
             app.UseAuthentication();
 
