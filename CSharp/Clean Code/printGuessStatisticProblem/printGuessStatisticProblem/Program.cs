@@ -9,29 +9,60 @@
 
         private static void PrintGuessStatistic(string candidate, int count)
         {
-            string number;
-            string verb;
-            string pluralModifier;
+            var messagCreator = new GuessStatisticMessageCreator();
+            var message = messagCreator.CreateMessage(candidate, count);
+
+            Console.WriteLine(message);
+        }
+    }
+
+    public class GuessStatisticMessageCreator
+    {
+        private string _number;
+        private string _verb;
+        private string _pluralModifier;
+
+        public string CreateMessage(string candidate, int count)
+        {
+            CreatePluralDependentMessageParts(count);
+            return $"There {_verb} {_number} {candidate}{_pluralModifier}";
+        }
+
+        private void CreatePluralDependentMessageParts(int count)
+        {
             if (count == 0)
             {
-                number = "no";
-                verb = "is";
-                pluralModifier = "s";
+                ThereAreNoLetters();
             }
             else if (count == 1)
             {
-                number = "1";
-                verb = "is";
-                pluralModifier = "";
+                ThereIsOneLetter();
             }
             else
             {
-                number = count.ToString();
-                verb = "are";
-                pluralModifier = "s";
+                ThereAreManyLetters(count);
             }
+        }
 
-            Console.WriteLine($"There {verb} {number} {candidate}{pluralModifier}");
+        private void ThereAreNoLetters()
+        {
+            _verb = "are";
+            _number = "no";
+            _pluralModifier = "s";
+        }
+
+        private void ThereIsOneLetter()
+        {
+            _verb = "is";
+            _number = "1";
+            _pluralModifier = "";
+        }
+
+        private void ThereAreManyLetters(int count)
+        {
+            _verb = "are";
+            _number = count.ToString();
+            _pluralModifier = "s";
         }
     }
 }
