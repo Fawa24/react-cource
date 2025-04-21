@@ -1,12 +1,20 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Api.Models;
+using Microsoft.AspNetCore.SignalR;
 
 namespace Api.Hubs
 {
-    public class ChatHub : Hub
+    public interface IChatClient
     {
-        public async Task SendMessage(string message)
+        public Task ReceiveMessage(string userName, string message);
+    }
+
+    public class ChatHub : Hub<IChatClient>
+    {
+        public async Task JoinChat(UserConnection connection)
         {
-            await Clients.All.SendAsync("ReceiveMessage", message);
+            await Groups.AddToGroupAsync(Context.ConnectionId, connection.ChatRoom);
+
+            await Clients.Group(connection.ChatRoom).ReceiveMessage("Admin", $"{connection.UserName} joined the chat");
         }
     }
 }
